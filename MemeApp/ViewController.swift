@@ -8,18 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+   
+    
+    
+    @IBOutlet var ImageViewPicker: UIImageView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+
+    @IBAction func PickImageFromAlbum(_ sender: Any) {
+        
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        
+        let ImageViewPicker = UIImagePickerController()
+        ImageViewPicker.delegate = self
+        ImageViewPicker.sourceType = .photoLibrary
+        present(ImageViewPicker, animated: true, completion: nil)
     }
 
-
+    @IBAction func PickAnImageFromCamera(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+        
+        let ImageViewPicker = UIImagePickerController()
+        ImageViewPicker.delegate = self
+        present(ImageViewPicker, animated:true, completion: nil)
+    }
 }
+
 
