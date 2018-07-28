@@ -11,37 +11,49 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
    
+        
+    @IBOutlet var ImageView: UIImageView!
     
-    
-    @IBOutlet var ImageViewPicker: UIImageView!
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
    
-
-    @IBAction func PickImageFromAlbum(_ sender: Any) {
+    @IBAction func PickImageFromAlbum(_ sender: AnyObject) {
         
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
         let pickerController = UIImagePickerController()
-        present(pickerController, animated: true, completion: nil)
+       // present(pickerController, animated: true, completion: nil)
         
         let ImageViewPicker = UIImagePickerController()
         ImageViewPicker.delegate = self
         ImageViewPicker.sourceType = .photoLibrary
-        present(ImageViewPicker, animated: true, completion: nil)
+        self.present(ImageViewPicker, animated: true, completion: nil)
+    }
     }
 
-    @IBAction func PickAnImageFromCamera(_ sender: Any) {
+    @IBAction func PickAnImageFromCamera(_ sender: AnyObject) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
         let pickerController = UIImagePickerController()
-        present(pickerController, animated: true, completion: nil)
+        //present(pickerController, animated: true, completion: nil)
         
         let ImageViewPicker = UIImagePickerController()
         ImageViewPicker.delegate = self
-        present(ImageViewPicker, animated:true, completion: nil)
+        ImageViewPicker.sourceType = .camera
+        self.present(ImageViewPicker, animated:true, completion: nil)
+    }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        ImageView.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func SaveImage(_ sender: Any) {
+        let imageData = UIImageJPEGRepresentation(ImageView.image!, 0.6)
+        let compressedJPGImage = UIImage(data: imageData!)
+        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
     }
 }
 
