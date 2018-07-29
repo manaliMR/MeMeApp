@@ -12,15 +12,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     // IBOutlets added
         
-       @IBOutlet weak var ImageView: UIImageView!
-       @IBOutlet weak var AlbumButton: UIBarButtonItem!
-       @IBOutlet weak var CameraButton: UIBarButtonItem!
-       @IBOutlet weak var CancelButton: UIBarButtonItem!
-       @IBOutlet weak var ShareButton: UIBarButtonItem!
-       @IBOutlet weak var TopTextField: UITextField!
-       @IBOutlet weak var BottomTextField: UITextField!
-       @IBOutlet weak var Toolbar: UIToolbar!
-       @IBOutlet weak var Navigationbar: UINavigationItem!
+       @IBOutlet var ImageView: UIImageView!
+       @IBOutlet var AlbumButton: UIBarButtonItem!
+       @IBOutlet var CameraButton: UIBarButtonItem!
+       @IBOutlet var ShareButton: UIBarButtonItem!
+       @IBOutlet var CancelButton: UIBarButtonItem!
+       @IBOutlet var TopTextField: UITextField!
+       @IBOutlet var BottomTextField: UITextField!
+       @IBOutlet var Toolbar: UIToolbar!
+       @IBOutlet var NavigationBar: UINavigationBar!
     
     // TextAttributes
     
@@ -108,14 +108,17 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Sharing Function
     
-    @IBAction func ShareOption(_ sender: AnyObject) {
+    
+    @IBAction func ShareOption(_ sender: Any) {
+    
+
     let memeImage = generateMemeImage()
-        let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil activityController.completionWithItemsHandler = { activity, success, items, error in
+        let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil); activityController.completionWithItemsHandler = { activity, success, items, error in
             self.saveMemeImage()
             self.dismiss(animated: true, completion: nil)
         }
         
-            presentViewController(activityCntroller, animated: true, completion: nil)
+        present(activityController, animated: true, completion: nil)
     }
     
     // Saving the memeImage in library
@@ -127,8 +130,29 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // adding memeEditor to the application delegate swift file
         
-        (UIApplication.sharedApplication.delegate as!
-          AppDelegate).memes.append(MemeEditor)
+        (UIApplication.shared.delegate as!
+          AppDelegate).memes.append(meme)
+    }
+    
+   
+    // Image that combines ImageView and TextField
+    
+    func generateMemeImage()  -> UIImage {
+        
+        NavigationBar.isHidden = true
+        Toolbar.isHidden = true
+        
+        // Editor view added to the image to be memed
+        
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let memeImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        NavigationBar.isHidden = false
+        Toolbar.isHidden = false
+        
+        return memeImage
     }
     
     // UIImagePickerControllerDelegate functions
