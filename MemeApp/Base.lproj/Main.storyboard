@@ -10,51 +10,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6CJ-nl-GIh">
+                                <rect key="frame" x="20" y="45" width="335" height="553"/>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf4-s0-1J7">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Album" width="126.5" id="1nb-mL-9RT">
+                                    <barButtonItem title="Album" width="247" id="gV5-sJ-nZN">
                                         <connections>
-                                            <action selector="PickImageFromAlbum:" destination="BYZ-38-t0r" id="2I0-KZ-nww"/>
+                                            <action selector="PickImageFromAlbum:" destination="BYZ-38-t0r" id="7jJ-iq-2wv"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="camera" id="slu-UT-Y3j">
+                                    <barButtonItem systemItem="camera" id="3KT-f0-r88">
                                         <connections>
-                                            <action selector="PickAnImageFromCamera:" destination="BYZ-38-t0r" id="wwE-cl-Bep"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="SaveImage" width="180.5" id="uBz-Na-cZT">
-                                        <connections>
-                                            <action selector="SaveImage:" destination="BYZ-38-t0r" id="0EM-f4-FhD"/>
+                                            <action selector="PickImageFromCamera:" destination="BYZ-38-t0r" id="cfG-JC-xzG"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6CJ-nl-GIh">
-                                <rect key="frame" x="20" y="45" width="335" height="553"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WxL-Uc-TSM">
-                                <rect key="frame" x="121" y="66" width="137" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6BS-9g-gcn" userLabel="Top Text Field">
+                                <rect key="frame" x="139" y="123" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQL-kc-zel">
-                                <rect key="frame" x="121" y="547" width="137" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRV-dT-zY1" userLabel="Bottom Text Field">
+                                <rect key="frame" x="139" y="533" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-q2-lDj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Uef-9h-aUX">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="RYU-0s-RL1">
+                                            <connections>
+                                                <action selector="ShareOption:" destination="BYZ-38-t0r" id="z1n-2u-Yvq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="PtY-KH-wyY"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -69,12 +78,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="AlbumButton" destination="gV5-sJ-nZN" id="bAo-BA-wZV"/>
+                        <outlet property="BottomTextField" destination="pRV-dT-zY1" id="lXo-Zg-L3O"/>
+                        <outlet property="CameraButton" destination="3KT-f0-r88" id="DJ3-nt-1mq"/>
+                        <outlet property="Cancel" destination="PtY-KH-wyY" id="RvY-9b-yCi"/>
+                        <outlet property="CancelButton" destination="PtY-KH-wyY" id="M6p-6D-BSr"/>
                         <outlet property="ImageView" destination="6CJ-nl-GIh" id="pO6-j6-ZOX"/>
+                        <outlet property="NavigationBar" destination="HZH-q2-lDj" id="RLY-X7-Hbr"/>
+                        <outlet property="ShareButton" destination="RYU-0s-RL1" id="MPx-VK-20Y"/>
+                        <outlet property="ShareOption" destination="RYU-0s-RL1" id="x9A-8V-6np"/>
+                        <outlet property="Toolbar" destination="Rf4-s0-1J7" id="fB9-6y-aIA"/>
+                        <outlet property="TopTextField" destination="6BS-9g-gcn" id="GzM-Er-YiI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141.59999999999999" y="93.103448275862078"/>
+            <point key="canvasLocation" x="1080.8" y="93.103448275862078"/>
         </scene>
     </scenes>
 </document>
