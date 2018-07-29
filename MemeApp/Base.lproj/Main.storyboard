@@ -14,12 +14,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rf4-s0-1J7">
-                                <rect key="frame" x="0.0" y="620" width="375" height="47"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf4-s0-1J7">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem title="Album" width="126.5" id="1nb-mL-9RT">
                                         <connections>
@@ -38,28 +38,38 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVR-I2-C9n">
-                                <rect key="frame" x="67" y="220" width="240" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Rev-D0-okX"/>
-                                    <constraint firstAttribute="width" constant="240" id="wsw-Ue-Epc"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6CJ-nl-GIh">
+                                <rect key="frame" x="20" y="45" width="335" height="553"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WxL-Uc-TSM">
+                                <rect key="frame" x="121" y="66" width="137" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQL-kc-zel">
+                                <rect key="frame" x="121" y="547" width="137" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="IVR-I2-C9n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="0Yj-Yn-nzl"/>
                             <constraint firstItem="Rf4-s0-1J7" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1kq-Mz-9yx"/>
-                            <constraint firstItem="Rf4-s0-1J7" firstAttribute="top" secondItem="IVR-I2-C9n" secondAttribute="bottom" constant="200" id="ChE-qU-qal"/>
-                            <constraint firstItem="IVR-I2-C9n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="FVR-qo-qY3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IVR-I2-C9n" secondAttribute="trailing" constant="70" id="K3z-Uz-VV2"/>
+                            <constraint firstItem="Rf4-s0-1J7" firstAttribute="top" secondItem="6CJ-nl-GIh" secondAttribute="bottom" constant="25" id="5pK-bX-J46"/>
+                            <constraint firstItem="6CJ-nl-GIh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7So-Xo-4x4"/>
+                            <constraint firstItem="6CJ-nl-GIh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="Evh-s4-osW"/>
                             <constraint firstItem="Rf4-s0-1J7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MQo-cA-SXJ"/>
                             <constraint firstItem="Rf4-s0-1J7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="b2f-SS-TWy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6CJ-nl-GIh" secondAttribute="trailing" constant="20" id="mWt-dQ-plu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="ImageView" destination="IVR-I2-C9n" id="fpD-Fv-QtG"/>
+                        <outlet property="ImageView" destination="6CJ-nl-GIh" id="pO6-j6-ZOX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -8,14 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextField {
 
    
         
     @IBOutlet var ImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let textColor = UIColor.white
+        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
+        
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(ImageView.size, false, scale)
+        
+        let textFontAttributes = [
+            NSAttributedStringKey.font: textFont,
+            NSAttributedStringKey.foregroundColor: textColor,
+            ] as [NSAttributedStringKey : Any]
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        
+        let rect = CGRect(origin: point, size: image.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+        // set textfield
         // Do any additional setup after loading the view, typically from a nib.
     }
    
@@ -44,6 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(ImageViewPicker, animated:true, completion: nil)
     }
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         ImageView.image = image
