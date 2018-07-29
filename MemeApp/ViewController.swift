@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextField {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
    
         
@@ -17,28 +17,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let textColor = UIColor.white
-        let textFont = UIFont(name: "Helvetica Bold", size: 12)!
+      
+        //text
+        //textAlingment
+        //defaultTextAttributes
+        //textFieldDidBeginEditing
         
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(ImageView.size, false, scale)
+        //textFieldShouldReturn
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
+    }
         
-        let textFontAttributes = [
-            NSAttributedStringKey.font: textFont,
-            NSAttributedStringKey.foregroundColor: textColor,
-            ] as [NSAttributedStringKey : Any]
-        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        @objc func keyboardWillShow(_ notification:Notification) {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+            
+        }
+        func getKeyboardHeight(_ notification:Notification) -> CGFloat  {
+        let userInfo = notification.userInfo
+        let KeyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return KeyboardSize.cgRectValue.height
         
-        let rect = CGRect(origin: point, size: image.size)
-        text.draw(in: rect, withAttributes: textFontAttributes)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+        func subscribeToKeyboardNotifications() {
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        }
+        func unsubscribeToKeyboardNotifications() {
+            NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         
     }
+        
+
+
+    
    
     @IBAction func PickImageFromAlbum(_ sender: AnyObject) {
         
