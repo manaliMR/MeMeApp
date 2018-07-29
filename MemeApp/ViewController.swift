@@ -37,8 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         return newImage!
-        // set textfield
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
    
     @IBAction func PickImageFromAlbum(_ sender: AnyObject) {
