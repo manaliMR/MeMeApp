@@ -108,7 +108,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Sharing Function
     
-    
     @IBAction func ShareOption(_ sender: AnyObject) {
     let memeImage = generateMemeImage()
         let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil activityController.completionWithItemsHandler = { activity, success, items, error in
@@ -117,6 +116,19 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
             presentViewController(activityCntroller, animated: true, completion: nil)
+    }
+    
+    // Saving the memeImage in library
+    
+    func saveMemeImage() {
+        let memeImage = generateMemeImage()
+        
+        let meme = MemeEditor(topText: TopTextField.text!, bottomText: BottomTextField.text!, originalImage: ImageView.image!, memeImage: memeImage)
+        
+        // adding memeEditor to the application delegate swift file
+        
+        (UIApplication.sharedApplication.delegate as!
+          AppDelegate).memes.append(MemeEditor)
     }
     
     // UIImagePickerControllerDelegate functions
