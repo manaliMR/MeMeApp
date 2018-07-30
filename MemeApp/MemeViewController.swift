@@ -79,6 +79,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Resetting textFields and Image
     
+    @IBAction func resettingController(_ sender: AnyObject) {
+        ImageView.image = nil
+        ShareButton.isEnabled = false
+        TopTextField.text = "TOP"
+        BottomTextField.text = "BOTTOM"
+    }
     
     // Picking image from Album
    
@@ -108,7 +114,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // Sharing Function
     
-    
     @IBAction func ShareOption(_ sender: Any) {
     
 
@@ -120,6 +125,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         present(activityController, animated: true, completion: nil)
     }
+    
+    
     
     // Saving the memeImage in library
     
@@ -222,7 +229,5 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return KeyboardSize.cgRectValue.height
         
     }
-
-    
 }
 

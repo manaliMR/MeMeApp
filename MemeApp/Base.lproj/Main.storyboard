@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Meme View Controller-->
+        <!--MemeViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MemeViewController" id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,11 @@
                                                 <action selector="ShareOption:" destination="BYZ-38-t0r" id="z1n-2u-Yvq"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="PtY-KH-wyY"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="PtY-KH-wyY">
+                                            <connections>
+                                                <action selector="resettingController:" destination="BYZ-38-t0r" id="2nx-pL-Nv9"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -82,13 +86,14 @@
                         <outlet property="BottomTextField" destination="pRV-dT-zY1" id="lXo-Zg-L3O"/>
                         <outlet property="CameraButton" destination="3KT-f0-r88" id="DJ3-nt-1mq"/>
                         <outlet property="Cancel" destination="PtY-KH-wyY" id="RvY-9b-yCi"/>
-                        <outlet property="CancelButton" destination="PtY-KH-wyY" id="M6p-6D-BSr"/>
+                        <outlet property="CancelButton" destination="PtY-KH-wyY" id="hLx-zj-sXp"/>
                         <outlet property="ImageView" destination="6CJ-nl-GIh" id="pO6-j6-ZOX"/>
                         <outlet property="NavigationBar" destination="HZH-q2-lDj" id="RLY-X7-Hbr"/>
                         <outlet property="ShareButton" destination="RYU-0s-RL1" id="MPx-VK-20Y"/>
                         <outlet property="ShareOption" destination="RYU-0s-RL1" id="x9A-8V-6np"/>
                         <outlet property="Toolbar" destination="Rf4-s0-1J7" id="fB9-6y-aIA"/>
                         <outlet property="TopTextField" destination="6BS-9g-gcn" id="GzM-Er-YiI"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="aeJ-5u-WY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
