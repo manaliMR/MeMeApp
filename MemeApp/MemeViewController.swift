@@ -27,7 +27,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-        NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3.0
     
       ]
@@ -66,8 +66,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         subscribeToKeyboardNotifications()
         
     }
-   
-    // Function viewWillDisappear
+    
+        // Function viewWillDisappear
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
